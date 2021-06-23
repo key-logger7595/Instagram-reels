@@ -32,6 +32,11 @@ export const AuthProvider =(props) => {
         }
        
     }, []);
+
+
+
+
+    
     return (
        <AuthContext.Provider value={value}>
            {!loading &&props.children}
