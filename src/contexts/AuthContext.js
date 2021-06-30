@@ -8,15 +8,19 @@ export const AuthProvider =(props) => {
     const [currentUser,setCurrentUser] = useState(null);
     const [loading,setLoading] = useState(true);
 
-    async function logIn(email,password){
+    const logIn = async(email,password)=>{
       return await auth.signInWithEmailAndPassword(email, password);
     }
-    const signUp = async() => {
+    const signOut = async() => {
       return await auth.signOut();
+    }
+    const signUp = async(email,password)=>{
+        return await auth.createUserWithEmailAndPassword(email, password);
     }
     const value={
         currentUser,
         logIn,
+        signOut,
         signUp
     }
     useEffect(() => {
@@ -27,7 +31,7 @@ export const AuthProvider =(props) => {
             setCurrentUser(user);
             setLoading(false)
         })
-        return()=>{
+        return ()=>{
             cleanUp();
         }
        

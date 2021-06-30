@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UseEffect from './effect';
 import App from './App';
-
-
+import UseEffect from './secret2';
+import Material from './Material';
+import "./index.css";
 ReactDOM.render(
   
-    // <App />
-    <UseEffect>
+    <App />
+    // <UseEffect>
 
-    </UseEffect>
+    // </UseEffect>
+    // <Material></Material>
   ,
   document.getElementById('root')
 );
