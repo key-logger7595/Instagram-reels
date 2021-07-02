@@ -4,9 +4,17 @@ import App from './App';
 import UseEffect from './secret2';
 import Material from './Material';
 import "./index.css";
+import Temporary from './poc-cutom-hooks/Temporary';
+import IntersectionDemo from "./Intersectionobserver/IntersectionDemo"
 ReactDOM.render(
-  
-    <App />
+
+    <Temporary>
+      
+    </Temporary>  
+  // <IntersectionDemo>
+      
+    // </IntersectionDemo>
+    // <App />
     // <UseEffect>
 
     // </UseEffect>

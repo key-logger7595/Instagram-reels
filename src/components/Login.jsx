@@ -6,7 +6,7 @@ import {
     Typography
 } from '@material-ui/core';
 import {AuthContext} from '../contexts/AuthContext';
-import { LocationDisabledRounded } from '@material-ui/icons';
+// import { LocationDisabledRounded } from '@material-ui/icons';
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

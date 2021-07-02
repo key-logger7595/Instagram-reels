@@ -7,6 +7,9 @@ import Profile from './components/Profile';
 import SignUp from './components/SignUp';
 
 import { AuthProvider } from './contexts/AuthContext';
+
+
+
 export default function App() {
   return (
     
