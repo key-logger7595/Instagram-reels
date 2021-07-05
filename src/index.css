@@ -6,9 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
-  display:flex;
-  justify-content:center; 
-  background-color: aqua;
+  /* display:flex;
+  justify-content:center;  */
+  /* background-color: aqua; */
 }
 
 code {

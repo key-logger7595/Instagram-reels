@@ -26,7 +26,7 @@ export default function IntersectionDemo() {
                   child.pause();
               }  
               })
-
+ 
         })
     }
     

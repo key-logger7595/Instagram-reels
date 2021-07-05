@@ -6,11 +6,19 @@ import Material from './Material';
 import "./index.css";
 import Temporary from './poc-cutom-hooks/Temporary';
 import IntersectionDemo from "./Intersectionobserver/IntersectionDemo"
-ReactDOM.render(
+import MainComponent from './InfiniteScrollingApi/MainComponent';
 
-    <Temporary>
+// import MainComponent from './understanusecallback/MainComponent';
+
+ReactDOM.render(
+     
+  <App/>
+  // <MainComponent>
+    
+  // </MainComponent>
+    // <Temporary>
       
-    </Temporary>  
+    // </Temporary>  
   // <IntersectionDemo>
       
     // </IntersectionDemo>
