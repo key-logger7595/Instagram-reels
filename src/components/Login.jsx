@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import image from '../phones.png';
 import {
     TextField, makeStyles, Grid, Button, Paper, Card,
     CardContent, CardActions, Container, CardMedia,
@@ -47,7 +48,12 @@ function Login(props) {
         image: {
             height: "6rem",
             backgroundSize: "contain"
-        }
+        },
+        imageDimension:{
+            height:'100%',
+            width:'100%'
+        },
+        
     })
     const handleSubmit = async (e) => {
         // alert(email + password);
@@ -72,7 +78,8 @@ function Login(props) {
             <Container>
                 <Grid container className={classes.alignCenter} spacing={2}>
                     <Grid item sm={4} >
-                        <Paper className={classes.crousel} >Crousel</Paper>
+                        <img src={image} alt="phones.jpg" className={classes.imageDimension}/>
+
                     </Grid>
                     <Grid item sm={5}>
                         <Card variant="outlined">
