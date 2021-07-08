@@ -54,7 +54,7 @@ let useStyles = makeStyles((theme)=>{
 })
 
 export default function SignUp(props) {
-    const[userName,setUserName] = useState('');
+    const[username,setUserName] = useState('');
     const[email,setEmail] = useState('');
     const[password,setPassword] = useState('');
 
@@ -103,9 +103,10 @@ export default function SignUp(props) {
                 database.users.doc(uid).set({
                     email: email,
                     userId: uid,
-                    username:userName,
+                    username:username,
                     createdAt: database.getUserTimeStamp(),
-                    profileUrl: downloadurl
+                    profileUrl: downloadurl,
+                    postIds:[]
                 })
                 setLoader(false);
                 props.history.push("/")
@@ -143,19 +144,21 @@ export default function SignUp(props) {
                                     onChange={(e) => { setPassword(e.target.value) }}
                                     display="block"
                                 />
-                                <TextField id="outlined-basic" label="password" type="password" variant="outlined" value={password}
+                                <TextField id="outlined-basic" label="username" type="username" variant="outlined" value={username}
                                     size="small"
                                     className={classes.mb}
-                                    onChange={(e) => { setPassword(e.target.value) }}
+                                    onChange={(e) => { setUserName(e.target.value) }}
                                     display="block"
                                 />
                                 
                             </CardContent>
                             <CardActions>
-                                <Button variant="outlined" color="secondary" onClick={handleSignup} disabled={loader} 
+                                <Button variant="contained" color="secondary"  disabled={loader} 
                                 fullWidth startIcon={<CloudUploadIcon></CloudUploadIcon>} 
                                 
-                                >Upload Profile Image</Button>
+                               component="label">Upload Profile Image
+                                <input type="file" accept="image/*" onChange={handleFileSubmit} hidden/>
+                                </Button>
                                 
                             </CardActions>
                             <CardActions className={classes.cardActionBtn}>
@@ -201,22 +204,3 @@ function LinkButton(prop) {
     )
 }
 
-//   <form onSubmit={handleSignup}>
-//                 <div>
-//                     <label htmlFor="">UserName</label>
-//                     <input type="text" value={userName} onChange={(e)=>{setUserName(e.target.value)}}/>
-//                 </div>
-//                 <div>
-//                     <label htmlFor="">Email</label>
-//                     <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-//                 </div>
-//                 <div>
-//                     <label htmlFor="">Password</label>
-//                     <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-//                 </div>
-//                 <div>
-//                     <label htmlFor="">Profile Image</label>
-//                     <input type="file" accept="image/*" onChange={handleFileSubmit}/>
-//                 </div>
-//                 <button type="submit" disabled={loader}>login</button>
-//             </form>
