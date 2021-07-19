@@ -46,7 +46,8 @@ function Login(props) {
         //     textAlign: "center"
         // },
         image: {
-            height: "6rem",
+            height:"6rem",
+           
             backgroundSize: "contain"
         },
         imageDimension:{

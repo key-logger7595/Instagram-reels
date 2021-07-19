@@ -56,7 +56,7 @@ export default function Feed() {
             //i will also have access to all the schema keys inside
             // dataObject.data();
 
-            let dataObject = await database.users.doc(currentUser.uid).get();
+        let dataObject = await database.users.doc(currentUser.uid).get();
         // console.log(dataPromise.data());
         setUser(dataObject.data());
         setPageLoading(false);
@@ -70,6 +70,8 @@ export default function Feed() {
        async function fetchPosts(){
         const unsub = await database.posts.orderBy("createdAt", "desc")
         .onSnapshot(async snapshot => {
+
+            //due to this snapshot this aysn fun reruns as we upload new video and add new posts.
             console.log(snapshot);
             let videos = snapshot.docs.map(doc => doc.data());
             // // console.log(videos);
@@ -84,10 +86,11 @@ export default function Feed() {
             for (let i = 0; i < videos.length; i++) {
                 let videoUrl = videos[i].url;
                 let auid = videos[i].auid;
+                let id = snapshot.docs[i].id;
                 let userObject = await database.users.doc(auid).get();
                 let userProfileUrl = userObject.data().profileUrl;
                 let userName = userObject.data().username;
-                videosArr.push({ videoUrl, userProfileUrl, userName });
+                videosArr.push({ videoUrl, userProfileUrl, userName,puid:id });
             }
             setVideos(videosArr);
             return unsub;
@@ -194,12 +197,7 @@ function Video(props) {
     console.log(props.userName);
     return (
         <>
-            <video style={{
-                height: "86vh",
-                marginBottom: "5rem",
-                marginTop: "2rem",
-                border: "1px solid red"
-            }}
+            <video 
 
                 controls muted ="true" id={props.id} >
                 <source src={

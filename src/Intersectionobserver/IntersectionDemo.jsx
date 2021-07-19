@@ -9,18 +9,18 @@ import v4 from "./frog.mp4"
 
 export default function IntersectionDemo() {
     const callBack=(entries)=>{
-        // console.log(entries)
+        console.log(entries)
         entries.forEach(entry=>{
             let child = entry.target.children[0];
-            // console.log(child.id)
+            console.log(child.id)
             // play -> async work 
             // pause -> sync work
-            // if (entry.isIntersecting) {
-            //     console.log(child.id)
-            // } else {
-            //     console.log(child.id)
+            if (entry.isIntersecting) {
+                console.log(child.id)
+            } else {
+                console.log(child.id)
 
-            // }
+            }
             child.play().then(function(){
                 if (entry.isIntersecting === false) {
                   child.pause();

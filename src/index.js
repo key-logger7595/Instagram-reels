@@ -14,16 +14,16 @@ ReactDOM.render(
      
 
  
-  <App/>
+  // <App/>
   // <MainComponent>
     
   // </MainComponent>
     // <Temporary>
       
     // </Temporary>  
-  // <IntersectionDemo>
+  <IntersectionDemo>
       
-    // </IntersectionDemo>
+    </IntersectionDemo>
     // <App />
     // <UseEffect>
 
