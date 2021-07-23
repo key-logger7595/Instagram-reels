@@ -5,7 +5,8 @@ function Video(props) {
             <video 
                 className={props.classes1}
                 controls
-                muted ="true" id={props.id} >
+                muted="true"
+                 id={props.id} >
                 <source src={
                     props.src
                 } type="video/mp4"

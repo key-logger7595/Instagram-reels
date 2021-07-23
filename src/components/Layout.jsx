@@ -1,15 +1,9 @@
-import React,{useState,useContext,useEffect} from 'react'
-import Feed from './Feed'
+import React, { useState, useContext, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import { Typography } from '@material-ui/core'
-import { database,storage } from '../firebase';
-import {AuthContext} from '../contexts/AuthContext';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import { IconButton } from '@material-ui/core';
+import { database, storage } from '../firebase';
+import { AuthContext } from '../contexts/AuthContext';
 import MenuAppBar from './MenuAppBar'
-import uuid from'react-uuid';
+import uuid from 'react-uuid';
 import Video from './Video'
 
 
@@ -181,7 +175,59 @@ const Layout = () => {
         }
         uploadTask.on('state_changed', f1, f2, f3)
     }
+     
+    const callBack=(entries)=>{
+        console.log(entries)
+        entries.forEach(entry=>{
+            let child = entry.target.children[0];
+            console.log(child.id)
+            // play -> async work 
+            // pause -> sync work
+            if (entry.isIntersecting) {
+                console.log(child.id)
+            } else {
+                console.log(child.id)
 
+            }
+            child.play().then(function(){
+                if (entry.isIntersecting === false) {
+                  child.pause();
+              }  
+              }).catch(err=>{
+                  console.log(err);
+              })
+ 
+        })
+    }
+    //intersection observer UseEffect
+    useEffect(()=>{
+        //root
+        //ui
+        //margin 
+        
+        let conditionalObj = {
+            root:null,
+            threshold:"0.9"
+        }
+        
+        //setting the observer obj on every element we 
+        //want to observe 
+        //watch carefully that useEffect runs once but 
+        //the observer is like an event attached which
+        //will run the cb function everytime conditionalObj is 
+        //hold true 
+          
+
+              let observer = new IntersectionObserver(callBack, conditionalObj);
+              let elements= document.querySelectorAll('#video-container');
+              console.log(elements)
+       
+              elements.forEach((el)=>{
+                  observer.observe(el);
+              })
+          
+   
+       },[videos])
     return (
     <div className={classes.root}>
         {/* app bar */}
@@ -195,7 +241,7 @@ const Layout = () => {
             <div className ={classes.feedContainer}>
             {videos.map((videoObj)=>{
                       console.log(videoObj);
-                    return <div className={classes.videoContainer}>
+                    return <div id="video-container" className={classes.videoContainer}>
                         <Video
                                 src={videoObj.videoUrl}
                                 id={videoObj.puid}
@@ -215,7 +261,7 @@ const Layout = () => {
     )
 }
 
-export default Layout
+export default Layout;
 
 
 
