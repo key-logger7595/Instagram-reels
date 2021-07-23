@@ -5,6 +5,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './components/Profile';
 import SignUp from './components/SignUp';
+import Layout from './components/Layout';
 
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -19,7 +20,7 @@ export default function App() {
             <Route path="/login" component={Login} />
             <Route path="/SignUp" component={SignUp} />
             <PrivateRoute exact path="/profile" abc={Profile}></PrivateRoute>
-            <PrivateRoute exact path="/" abc={Feed}></PrivateRoute>
+            <PrivateRoute exact path="/" abc={Layout}></PrivateRoute>
             
 
           </Switch>

@@ -21,10 +21,10 @@ ReactDOM.render(
     // <Temporary>
       
     // </Temporary>  
-  <IntersectionDemo>
+  // <IntersectionDemo>
       
-    </IntersectionDemo>
-    // <App />
+  //   </IntersectionDemo>
+    <App />
     // <UseEffect>
 
     // </UseEffect>
