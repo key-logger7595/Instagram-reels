@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef} from 'react'
+import React,{useState,useEffect,useRef} from 'react';
 
 export default function RenderCount() {
     const[name,setName] = useState('');

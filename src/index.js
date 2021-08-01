@@ -7,24 +7,27 @@ import "./index.css";
 import Temporary from './poc-cutom-hooks/Temporary';
 import IntersectionDemo from "./Intersectionobserver/IntersectionDemo"
 import MainComponent from './InfiniteScrollingApi/MainComponent';
-
+import RenderCount from '../src/unerstanduseRef/RenderCount';
+import PersistPrevState from '../src/unerstanduseRef/PersistPrevState';
 // import MainComponent from './understanusecallback/MainComponent';
 
 ReactDOM.render(
      
 
- 
+  // <PersistPrevState/>
   // <App/>
-  // <MainComponent>
+  <MainComponent>
     
-  // </MainComponent>
+  </MainComponent>
     // <Temporary>
       
     // </Temporary>  
   // <IntersectionDemo>
       
   //   </IntersectionDemo>
-    <App />
+    // <App />
+    // <RenderCount/>
+    // <PersistPrevState></PersistPrevState>
     // <UseEffect>
 
     // </UseEffect>

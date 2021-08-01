@@ -14,6 +14,9 @@ export default function Temporary() {
     return (
         <div>
             <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/> 
+            <div>
+                My Name is {name} 
+            </div>
         </div>
     )
 }

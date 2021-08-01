@@ -1,5 +1,6 @@
-import React,{useState,useRef,useCallback, useEffect} from 'react'
+import React,{useState,useRef,useCallback,useEffect} from 'react'
 import useBookSearch from './useBookSearch';
+import axios from 'axios'
 
 export default function MainComponent() {
     
@@ -13,13 +14,44 @@ export default function MainComponent() {
     const observer = useRef();
      
 
-    const  {books,loading,hasMore,error} = useBookSearch(query,pageNumber);
+    const[loading,setLoading] = useState('true');
+    const[error,setError] = useState('false');
+    const[books,setBooks] = useState([]);
+    const[hasMore,setHasMore] = useState(false);
     
     useEffect(()=>{
-          console.log("useEffect of Main");
-    },[])
+        setBooks([]);
+      },[query])
+  
+      useEffect(()=>{
+          setLoading(true);
+          setError(false);
+          let cancel ;
+         axios({
+             method:'GET',
+             url:'http://openlibrary.org/search.json',
+             params:{q:query,page:pageNumber},
+             cancelToken:new axios.CancelToken(c=>cancel=c)
+         }).then(res=>{
+             setBooks(prevBooks=>{
+                 return [...new Set([...prevBooks,...res.data.docs.map(b=>b.title)])]
+             })
+             setHasMore(res.data.docs.length > 0);
+             setLoading(false);
+             console.log(res.data);
+         }).catch(e=>{
+  
+              if(axios.isCancel(e)) return
+              setError(true); 
+           })
+  
+         return ()=> cancel();
+      },[query,pageNumber])  
      
     const lastElementRef = useCallback(node=>{
+        //yeh isliye kiya hai kyunki lastElementRef 1 se zaada baar fire hoga i dont know why 
+        //all i get is that whenever the component mounts function Instance Passed to ref fires
+        //but here this function is firing more than once
 
         if(loading) return ;
 
@@ -36,7 +68,7 @@ export default function MainComponent() {
 
 
     const handleSearch=(e)=>{
-
+     
       setQuery(e.target.value);
       setPageNumber(1);
 
@@ -46,6 +78,7 @@ export default function MainComponent() {
 
     return (
         <div>
+
             <input  value={query} type="text" onChange={handleSearch} ></input>
             {books.map((book,index) =>{
                 if(books.length === index + 1)

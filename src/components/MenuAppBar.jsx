@@ -76,7 +76,7 @@ export default function MenuAppBar({user,submitHandler,loading,handleInputFile})
         <Toolbar>
           <Typography 
  variant="h6" className={classes.title}>
-            Instagram
+            Instagram Reels
           </Typography>
                   <div className={classes.styleIconsDiv}>
                        <input accept="file" className={classes.input} id="icon-button-file" type="file"

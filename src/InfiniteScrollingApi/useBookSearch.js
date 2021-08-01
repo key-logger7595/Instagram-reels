@@ -8,12 +8,14 @@ export default function useBookSearch(query,pageNumber) {
 
     //second useEffect which clear the books first 
     //and then make an api request
-
+    
     useEffect(()=>{
+      console.log("useEffect of customHook");
       setBooks([]);
     },[query])
 
     useEffect(()=>{
+        console.log("useEffect of custom hook");
         setLoading(true);
         setError(false);
         let cancel ;
