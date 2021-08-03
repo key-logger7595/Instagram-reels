@@ -9,6 +9,7 @@ import IntersectionDemo from "./Intersectionobserver/IntersectionDemo"
 import MainComponent from './InfiniteScrollingApi/MainComponent';
 import RenderCount from '../src/unerstanduseRef/RenderCount';
 import PersistPrevState from '../src/unerstanduseRef/PersistPrevState';
+import PhotosFetch from './InfiniteScrollingApi/PhotosFetch';
 // import MainComponent from './understanusecallback/MainComponent';
 
 ReactDOM.render(
@@ -16,9 +17,9 @@ ReactDOM.render(
 
   // <PersistPrevState/>
   // <App/>
-  <MainComponent>
+  // <MainComponent>
     
-  </MainComponent>
+  // </MainComponent>
     // <Temporary>
       
     // </Temporary>  
@@ -32,6 +33,7 @@ ReactDOM.render(
 
     // </UseEffect>
     // <Material></Material>
+    <PhotosFetch></PhotosFetch>
   ,
   document.getElementById('root')
 );
